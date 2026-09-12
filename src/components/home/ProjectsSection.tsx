@@ -18,8 +18,11 @@ export function ProjectsSection() {
 
     const card = track.querySelector<HTMLElement>(".project-card");
     const styles = window.getComputedStyle(track);
-    const gap = Number.parseFloat(styles.columnGap || styles.gap || "18");
-    const distance = card ? card.offsetWidth + gap : 360;
+    const gap =
+      [styles.columnGap, styles.gap]
+        .map((value) => Number.parseFloat(value))
+        .find((value) => Number.isFinite(value)) ?? 0;
+    const distance = card ? card.getBoundingClientRect().width + gap : 360;
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
@@ -51,8 +54,8 @@ export function ProjectsSection() {
             </h2>
             <p>
               {t({
-                es: "Una selección de espacios donde D Signio integra diseño, dotación, mobiliario contract y ejecución para proyectos hoteleros, residenciales e inmobiliarios.",
-                en: "A selection of spaces where D Signio integrates design, furnishing, contract furniture, and execution for hospitality, residential, and real estate projects.",
+                es: "Una selección de espacios donde D Signio integra diseño, dotación, mobiliario contract y ejecución para proyectos hoteleros, institucionales e inmobiliarios.",
+                en: "A selection of spaces where D Signio integrates design, furnishing, contract furniture, and execution for hospitality, institutional, and real estate projects.",
               })}
             </p>
           </header>

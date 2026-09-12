@@ -23,8 +23,8 @@ export function BusinessLinesSection() {
           </h2>
           <p>
             {t({
-              es: "Soluciones integrales para proyectos hoteleros e inmobiliarios.",
-              en: "Comprehensive solutions for hospitality and real estate projects.",
+              es: "Soluciones integrales para proyectos hoteleros, institucionales e inmobiliarios.",
+              en: "Comprehensive solutions for hospitality, institutional, and real estate projects.",
             })}
           </p>
         </header>

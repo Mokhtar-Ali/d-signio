@@ -85,7 +85,7 @@ export function Footer() {
 
           <div className="footer-links">
             <div className="footer-block">
-              <h2>Email</h2>
+              <h2>{t({ es: "Correo", en: "Email" })}</h2>
               <a href="mailto:Kdelahoz@d-signio.com">Kdelahoz@d-signio.com</a>
             </div>
 
