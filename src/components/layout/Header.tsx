@@ -4,11 +4,17 @@ import Link from "next/link";
 import { useState } from "react";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { useLanguage } from "@/providers/LanguageProvider";
+import type { LocalizedText } from "@/types";
 
 const logoUrl =
   "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f249d6e84e52bef4c3017f.png";
 
-const navItems = [
+export type HeaderNavItem = {
+  href: string;
+  label: LocalizedText;
+};
+
+const defaultNavItems: HeaderNavItem[] = [
   {
     href: "#about",
     label: { es: "Sobre D-Signio", en: "About D-Signio" },
@@ -27,7 +33,11 @@ const navItems = [
   },
 ];
 
-export function Header() {
+type HeaderProps = {
+  navItems?: HeaderNavItem[];
+};
+
+export function Header({ navItems = defaultNavItems }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useLanguage();
 

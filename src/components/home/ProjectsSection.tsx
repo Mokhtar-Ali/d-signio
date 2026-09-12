@@ -1,9 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { useRef } from "react";
 import { SectionEyebrow } from "@/components/shared/SectionEyebrow";
 import { projects } from "@/data/projects";
 import { useLanguage } from "@/providers/LanguageProvider";
+
+const projectDetailTargets: Record<string, string> = {
+  "hays-house": "patio-residencial",
+};
 
 export function ProjectsSection() {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -82,30 +87,43 @@ export function ProjectsSection() {
 
         <div className="projects-carousel">
           <div className="projects-track" ref={trackRef} role="list">
-            {projects.map((project) => (
-              <article className="project-card" key={project.id} role="listitem">
-                <div className="project-image">
-                  <img src={project.image} alt={project.name} />
-                  <span className="project-city">{project.city}</span>
-                </div>
+            {projects.map((project) => {
+              const detailId = projectDetailTargets[project.id] ?? project.id;
 
-                <div className="project-card-body">
-                  <h3>{project.name}</h3>
-                  <p className="project-meta">
-                    {language === "es" ? project.metaEs : project.metaEn}
-                  </p>
-                  <p className="project-description">
-                    {language === "es"
-                      ? project.descriptionEs
-                      : project.descriptionEn}
-                  </p>
-                  <span className="project-link-label">
-                    {t({ es: "Ver proyecto", en: "View project" })}
-                    <span aria-hidden="true">→</span>
-                  </span>
-                </div>
-              </article>
-            ))}
+              return (
+                <Link
+                  className="project-card"
+                  href={`/projects#${detailId}`}
+                  key={project.id}
+                  role="listitem"
+                  aria-label={t({
+                    es: `Ver proyecto ${project.name}`,
+                    en: `View project ${project.name}`,
+                  })}
+                >
+                  <div className="project-image">
+                    <img src={project.image} alt={project.name} />
+                    <span className="project-city">{project.city}</span>
+                  </div>
+
+                  <div className="project-card-body">
+                    <h3>{project.name}</h3>
+                    <p className="project-meta">
+                      {language === "es" ? project.metaEs : project.metaEn}
+                    </p>
+                    <p className="project-description">
+                      {language === "es"
+                        ? project.descriptionEs
+                        : project.descriptionEn}
+                    </p>
+                    <span className="project-link-label">
+                      {t({ es: "Ver proyecto", en: "View project" })}
+                      <span aria-hidden="true">→</span>
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
