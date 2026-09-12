@@ -1,5 +1,7 @@
 import { ProjectFacts } from "@/components/projects/ProjectFacts";
 import { ProjectGallery } from "@/components/projects/ProjectGallery";
+import { RevealBlock } from "@/components/shared/RevealBlock";
+import { RevealText } from "@/components/shared/RevealText";
 import type { ProjectDetail } from "@/data/projectDetails";
 import type { Language, LocalizedText } from "@/types";
 
@@ -34,25 +36,43 @@ export function ProjectDetailCard({
 
       <div className="project-detail-info">
         {project.logo ? (
-          <div className="project-detail-logo">
+          <RevealBlock
+            as="div"
+            className="project-detail-logo"
+            delay={80}
+            variant="fade"
+          >
             <img src={project.logo} alt={`${project.name} logo`} />
-          </div>
+          </RevealBlock>
         ) : null}
 
-        <p className="project-detail-kicker">
+        <RevealBlock
+          as="p"
+          className="project-detail-kicker"
+          delay={project.logo ? 140 : 80}
+          variant="slide"
+        >
           {resolveText(project.subtitle, language)}
-        </p>
-        <h2>{project.name}</h2>
+        </RevealBlock>
+        <RevealText as="h2" text={project.name} delay={190} />
 
         <div className="project-detail-copy">
-          <div className="project-detail-copy-block">
+          <RevealBlock
+            as="div"
+            className="project-detail-copy-block"
+            delay={360}
+          >
             <h3>
               {language === "es" ? "Alcance del proyecto" : "Project scope"}
             </h3>
             <p>{resolveText(project.scope, language)}</p>
-          </div>
+          </RevealBlock>
 
-          <div className="project-detail-copy-block">
+          <RevealBlock
+            as="div"
+            className="project-detail-copy-block"
+            delay={430}
+          >
             <h3>{language === "es" ? "Intervenciones" : "Interventions"}</h3>
             <ul>
               {project.interventions.map((intervention) => (
@@ -61,21 +81,26 @@ export function ProjectDetailCard({
                 </li>
               ))}
             </ul>
-          </div>
+          </RevealBlock>
 
-          <div className="project-detail-copy-block">
+          <RevealBlock
+            as="div"
+            className="project-detail-copy-block"
+            delay={500}
+          >
             <h3>{language === "es" ? "Resultado" : "Result"}</h3>
             <p>{resolveText(project.result, language)}</p>
-          </div>
+          </RevealBlock>
         </div>
 
-        <ProjectFacts facts={project.facts} language={language} />
+        <ProjectFacts facts={project.facts} language={language} delay={570} />
       </div>
 
       <ProjectGallery
         project={project}
         language={language}
         onOpenImage={onOpenImage}
+        revealDelay={220}
       />
     </article>
   );

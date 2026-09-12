@@ -6,7 +6,7 @@ export const projects: Project[] = [
     name: "Casa Lecompte",
     city: "Cartagena",
     image:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f20f78fc17decc45e42c37.jpg",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/Home%20Projects%20Casa%20Lecompte%20.jpg",
     metaEs: "Proyecto inmobiliario · Interiorismo",
     metaEn: "Real estate project · Interior design",
     descriptionEs:
@@ -19,7 +19,7 @@ export const projects: Project[] = [
     name: "Cartagena Vacation Rentals",
     city: "Cartagena",
     image:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f201e2663e5f92ffe04ff7.jpg",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/Home%20Projects%20Cartagena%20Vacation%20Rentals.jpg",
     metaEs: "Renta vacacional · Interiorismo",
     metaEn: "Vacation rentals · Interior design",
     descriptionEs:
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     name: "Wyndham Santa Marta",
     city: "Santa Marta",
     image:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f21015663e5f92ffe3b588.jpg",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/Home%20Projects%20Wyndham%20Santa%20Marta.jpg",
     metaEs: "Hospitality · Ejecución integral",
     metaEn: "Hospitality · End-to-end execution",
     descriptionEs:
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     name: "Hotel Faranda Cartagena",
     city: "Cartagena",
     image:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f204cef50d9ecd2e0daf4f.jpg",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/Home%20Projects%20Hotel%20Faranda%20Cartagena.jpg",
     metaEs: "Hospitality · Habitaciones",
     metaEn: "Hospitality · Guest rooms",
     descriptionEs:
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     name: "Hotel Faranda Barranquilla",
     city: "Barranquilla",
     image:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f72f188831cb2c6ce25dd9.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/Home%20Projects%20Hotel%20Faranda%20Barranquilla.jpg",
     metaEs: "Hospitality · Textiles y accesorios",
     metaEn: "Hospitality · Textiles and accessories",
     descriptionEs:
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     name: "Hotel El Prado",
     city: "Barranquilla",
     image:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f204ce49d7293cbd48f270.jpg",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/Home%20Projects%20Hotel%20EL%20Prado.jpg",
     metaEs: "Hospitality · Dotación estratégica",
     metaEn: "Hospitality · Strategic furnishing",
     descriptionEs:

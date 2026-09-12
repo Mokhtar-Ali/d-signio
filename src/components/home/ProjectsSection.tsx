@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useRef } from "react";
+import { RevealBlock } from "@/components/shared/RevealBlock";
+import { RevealText } from "@/components/shared/RevealText";
 import { SectionEyebrow } from "@/components/shared/SectionEyebrow";
 import { projects } from "@/data/projects";
 import { useLanguage } from "@/providers/LanguageProvider";
@@ -13,6 +15,10 @@ const projectDetailTargets: Record<string, string> = {
 export function ProjectsSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const { language, t } = useLanguage();
+  const title = t({
+    es: "Proyectos diseñados, estructurados y ejecutados con precisión.",
+    en: "Projects designed, structured, and executed with precision.",
+  });
 
   function scrollProjects(direction: -1 | 1) {
     const track = trackRef.current;
@@ -51,21 +57,16 @@ export function ProjectsSection() {
             <SectionEyebrow>
               {t({ es: "Proyectos", en: "Projects" })}
             </SectionEyebrow>
-            <h2 id="projects-title">
-              {t({
-                es: "Proyectos diseñados, estructurados y ejecutados con precisión.",
-                en: "Projects designed, structured, and executed with precision.",
-              })}
-            </h2>
-            <p>
+            <RevealText as="h2" id="projects-title" text={title} delay={110} />
+            <RevealBlock as="p" delay={320}>
               {t({
                 es: "Una selección de espacios donde D Signio integra diseño, dotación, mobiliario contract y ejecución para proyectos hoteleros, institucionales e inmobiliarios.",
                 en: "A selection of spaces where D Signio integrates design, furnishing, contract furniture, and execution for hospitality, institutional, and real estate projects.",
               })}
-            </p>
+            </RevealBlock>
           </header>
 
-          <div className="project-controls">
+          <RevealBlock as="div" className="project-controls" delay={380}>
             <button
               className="icon-button"
               type="button"
@@ -82,20 +83,23 @@ export function ProjectsSection() {
             >
               ›
             </button>
-          </div>
+          </RevealBlock>
         </div>
 
         <div className="projects-carousel">
           <div className="projects-track" ref={trackRef} role="list">
-            {projects.map((project) => {
+            {projects.map((project, index) => {
               const detailId = projectDetailTargets[project.id] ?? project.id;
 
               return (
-                <Link
+                <RevealBlock
+                  as={Link}
                   className="project-card"
+                  delay={160}
                   href={`/projects#${detailId}`}
                   key={project.id}
                   role="listitem"
+                  staggerIndex={index}
                   aria-label={t({
                     es: `Ver proyecto ${project.name}`,
                     en: `View project ${project.name}`,
@@ -121,7 +125,7 @@ export function ProjectsSection() {
                       <span aria-hidden="true">→</span>
                     </span>
                   </div>
-                </Link>
+                </RevealBlock>
               );
             })}
           </div>

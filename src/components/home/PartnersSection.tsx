@@ -1,5 +1,7 @@
 "use client";
 
+import { RevealBlock } from "@/components/shared/RevealBlock";
+import { RevealText } from "@/components/shared/RevealText";
 import { SectionEyebrow } from "@/components/shared/SectionEyebrow";
 import { partners } from "@/data/partners";
 import { useLanguage } from "@/providers/LanguageProvider";
@@ -28,6 +30,10 @@ function PartnerCard({
 
 export function PartnersSection() {
   const { t } = useLanguage();
+  const title = t({
+    es: "Clientes que han confiado en nuestro trabajo.",
+    en: "Clients that have trusted our work.",
+  });
 
   return (
     <section
@@ -40,21 +46,21 @@ export function PartnersSection() {
           <SectionEyebrow>
             {t({ es: "Clientes", en: "Clients" })}
           </SectionEyebrow>
-          <h2 id="partners-title">
-            {t({
-              es: "Clientes que han confiado en nuestro trabajo.",
-              en: "Clients that have trusted our work.",
-            })}
-          </h2>
-          <p>
+          <RevealText as="h2" id="partners-title" text={title} delay={110} />
+          <RevealBlock as="p" delay={300}>
             {t({
               es: "Colaboramos con hoteles, resorts y marcas de hospitalidad creando espacios funcionales, elegantes y memorables.",
               en: "We collaborate with hotels, resorts, and hospitality brands to create functional, elegant, and memorable spaces.",
             })}
-          </p>
+          </RevealBlock>
         </header>
 
-        <div className="partners-window">
+        <RevealBlock
+          as="div"
+          className="partners-window"
+          delay={380}
+          variant="fade"
+        >
           <div className="partners-grid">
             {partners.map((partner) => (
               <PartnerCard partner={partner} key={partner.id} />
@@ -67,7 +73,7 @@ export function PartnersSection() {
               />
             ))}
           </div>
-        </div>
+        </RevealBlock>
       </div>
     </section>
   );

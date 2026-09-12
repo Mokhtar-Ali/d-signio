@@ -1,3 +1,5 @@
+import type { SyntheticEvent } from "react";
+
 export type LightboxImage = {
   src: string;
   alt: string;
@@ -8,6 +10,21 @@ type ProjectLightboxProps = {
   image: LightboxImage | null;
   onClose: () => void;
 };
+
+function handleImageError(
+  image: LightboxImage,
+  event: SyntheticEvent<HTMLImageElement>,
+) {
+  if (process.env.NODE_ENV === "development") {
+    console.error("[D-Signio] Project lightbox image failed to load", {
+      alt: image.alt,
+      src: image.src,
+    });
+  }
+
+  event.currentTarget.dataset.loadState = "error";
+  event.currentTarget.alt = "";
+}
 
 export function ProjectLightbox({
   closeLabel,
@@ -38,7 +55,11 @@ export function ProjectLightbox({
       >
         ×
       </button>
-      <img src={image.src} alt={image.alt} />
+      <img
+        src={image.src}
+        alt={image.alt}
+        onError={(event) => handleImageError(image, event)}
+      />
     </div>
   );
 }

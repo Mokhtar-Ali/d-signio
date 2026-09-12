@@ -56,11 +56,11 @@ export const projectDetails: ProjectDetail[] = [
       en: "Wallpaper supply and installation as a focused decorative intervention to add texture and visual finish to the space.",
     },
     images: [
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f20f78fc17decc45e42c37.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f20f78594e76a3ccfb285c.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f20f78663e5f92ffe39ed2.jpg",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69fce5a8a3dd25aa2a669141.png",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69fce7227285562721893c01.png",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69fa3387101c593bfc7ea7eb.png",
     ],
-    galleryType: "standard",
+    galleryType: "vertical3",
     facts: [
       {
         icon: "C",
@@ -119,9 +119,9 @@ export const projectDetails: ProjectDetail[] = [
       en: "Structuring, specification, and execution of furniture, textiles, and details for hospitality spaces.",
     },
     images: [
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f204ce49d7293cbd48f270.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f204ce663e5f92ffe125e2.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f204ce594e76a3cccb4a7d.jpg",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f734d4d868be008541bc4b.png",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f7350c6b07ab3303398fd5.png",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f7308652d70cb766c8c93f.png",
     ],
     galleryType: "vertical3",
     facts: [
@@ -187,8 +187,8 @@ export const projectDetails: ProjectDetail[] = [
       en: "Blackout curtains, serene-wave sheers, and bed runners for high-traffic hotel rooms.",
     },
     images: [
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f204cef50d9ecd2e0daf4f.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f204ce594e76a3cccb4a7e.jpg",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f4c22ddaa24d9895fdaafb.jpg",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f4c22d94b9e824d53e20da.jpg",
     ],
     galleryType: "two",
     facts: [
@@ -254,10 +254,10 @@ export const projectDetails: ProjectDetail[] = [
     },
     images: [
       "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f72f188831cb2c6ce25dd9.png",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f20c32663e5f92ffe2ef31.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f72f188e05555440cb9de4.png",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f72e45dd67e758c0dd917c.png",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f72e456b07ab330338c7e0.png",
     ],
-    galleryType: "standard",
+    galleryType: "vertical3",
     facts: [
       {
         icon: "C",
@@ -316,10 +316,10 @@ export const projectDetails: ProjectDetail[] = [
       en: "Design, furniture, and decorative detail solutions focused on operation, durability, and experience.",
     },
     images: [
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f21015663e5f92ffe3b588.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f21015594e76a3ccfc7021.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f210158e05555440c78d7f.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f210152b94af6fe53cb44e.jpg",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/6a0830e32e98e28fa12a0c2f.jpg",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69fa3724a7386fa308a26d81.png",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69fa372440c3c42fc07384b2.png",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69fa37242c10cdf20f4cb231.png",
     ],
     galleryType: "standard",
     facts: [
@@ -438,9 +438,9 @@ export const projectDetails: ProjectDetail[] = [
     },
     images: [
       "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f201e2663e5f92ffe04ff7.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f201e28e05555440c59004.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f201e22b94af6fe53ab12d.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f201e2594e76a3cccb49dc.jpg",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f201e2fab44d40209b35c6.jpg",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f4ce4f582e1c6327b2b727.jpg",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f5b96fdd67e758c0a2ede9.jpeg",
     ],
     galleryType: "standard",
     facts: [
@@ -566,10 +566,10 @@ export const projectDetails: ProjectDetail[] = [
       en: "Design applied to brand experience, decorative details, and commercial activation.",
     },
     images: [
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f3b7aeb7fe31537ab500ee.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f3b7af1c4b8f9c8595da3a.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f3b7afac1cc9ed19d77d0c.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f3b7afb1a8bd8d610b30ec.jpg",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f4d06e23e63d676c857b6c.jpg",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f736fe6b07ab330339ce02.png",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f4d06e8831cb2c6c8236ae.jpg",
+      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f738da8831cb2c6ce38f17.png",
     ],
     galleryType: "standard",
     facts: [

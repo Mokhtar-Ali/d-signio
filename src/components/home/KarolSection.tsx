@@ -1,6 +1,8 @@
 "use client";
 
 import { PillButton } from "@/components/shared/PillButton";
+import { RevealBlock } from "@/components/shared/RevealBlock";
+import { RevealText } from "@/components/shared/RevealText";
 import { SectionEyebrow } from "@/components/shared/SectionEyebrow";
 import { useLanguage } from "@/providers/LanguageProvider";
 
@@ -8,14 +10,18 @@ const logoUrl =
   "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f249d6d6968461203e69ec.png";
 
 const images = [
-  "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f23b796630fc6c0b533b5e.jpg",
-  "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f23b79fab44d4020abc541.jpg",
-  "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f23b796630fc6c0b533b5d.jpg",
-  "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f23b79663e5f92fff13ce2.jpg",
+  "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/About%20Karol%201.jpg",
+  "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/About%20Karol%202.jpg",
+  "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/About%20Karol%203.jpg",
+  "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/About%20Karol%204.jpg",
 ];
 
 export function KarolSection() {
   const { t } = useLanguage();
+  const title = t({
+    es: "Una mirada cercana, estética y funcional para cada espacio.",
+    en: "A personal, aesthetic, and functional vision for every space.",
+  });
 
   return (
     <section
@@ -24,7 +30,13 @@ export function KarolSection() {
       aria-labelledby="karol-title"
     >
       <div className="section-inner karol-grid">
-        <div className="karol-gallery" aria-label="Karol de D Signio">
+        <RevealBlock
+          as="div"
+          className="karol-gallery"
+          aria-label="Karol de D Signio"
+          delay={180}
+          variant="soft"
+        >
           <figure className="image-frame karol-main-image">
             <img src={images[0]} alt="Karol de D Signio" />
           </figure>
@@ -41,10 +53,12 @@ export function KarolSection() {
               </figure>
             ))}
           </div>
-        </div>
+        </RevealBlock>
 
         <div className="karol-copy">
-          <img className="karol-logo" src={logoUrl} alt="D Signio" />
+          <RevealBlock as="div" delay={80} variant="fade">
+            <img className="karol-logo" src={logoUrl} alt="D Signio" />
+          </RevealBlock>
 
           <SectionEyebrow>
             Karol
@@ -53,29 +67,24 @@ export function KarolSection() {
             </span>
           </SectionEyebrow>
 
-          <h2 id="karol-title">
-            {t({
-              es: "Una mirada cercana, estética y funcional para cada espacio.",
-              en: "A personal, aesthetic, and functional vision for every space.",
-            })}
-          </h2>
+          <RevealText as="h2" id="karol-title" text={title} delay={120} />
 
           <div className="karol-text">
-            <p>
+            <RevealBlock as="p" delay={320}>
               {t({
                 es: "Karol lidera D-Signio con una sensibilidad especial por los detalles, la armonía visual y la funcionalidad de cada ambiente.",
                 en: "Karol leads D-Signio with a special sensitivity for details, visual harmony, and the functionality of every environment.",
               })}
-            </p>
-            <p>
+            </RevealBlock>
+            <RevealBlock as="p" delay={410}>
               {t({
                 es: "Su trabajo combina dirección creativa, selección de mobiliario, materiales y acabados de alto tráfico, acompañando a cada cliente en la construcción de espacios con identidad propia.",
                 en: "Her work combines creative direction, furniture selection, materials, and high-traffic finishes, guiding each client in creating spaces with their own identity.",
               })}
-            </p>
+            </RevealBlock>
           </div>
 
-          <div className="contact-card">
+          <RevealBlock as="div" className="contact-card" delay={500}>
             <h3>
               {t({
                 es: "Hablemos de tu próximo proyecto",
@@ -100,7 +109,7 @@ export function KarolSection() {
                 {t({ es: "Email", en: "Email" })}
               </PillButton>
             </div>
-          </div>
+          </RevealBlock>
         </div>
       </div>
     </section>

@@ -1,10 +1,11 @@
 "use client";
 
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
+import { RevealBlock } from "@/components/shared/RevealBlock";
 import { useLanguage } from "@/providers/LanguageProvider";
 
 const footerLogo =
-  "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/6a07748e937389dca05ebdd6.png";
+  "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/Logo%20Footer.png";
 
 const socialLinks = [
   {
@@ -77,7 +78,12 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-inner">
-        <div className="footer-top">
+        <RevealBlock
+          as="div"
+          className="footer-top"
+          delay={80}
+          variant="fade"
+        >
           <div className="footer-brand">
             <img src={footerLogo} alt="D Signio" />
             <p>Barranquilla, Colombia</p>
@@ -117,9 +123,14 @@ export function Footer() {
               <LanguageSwitcher variant="dark" />
             </div>
           </div>
-        </div>
+        </RevealBlock>
 
-        <div className="footer-bottom">
+        <RevealBlock
+          as="div"
+          className="footer-bottom"
+          delay={150}
+          variant="fade"
+        >
           <span>
             {t({
               es: "© 2026 D Signio. Todos los derechos reservados.",
@@ -136,7 +147,7 @@ export function Footer() {
               Cleopatra Solutions
             </a>
           </span>
-        </div>
+        </RevealBlock>
       </div>
     </footer>
   );

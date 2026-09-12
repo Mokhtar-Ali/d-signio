@@ -1,16 +1,30 @@
 "use client";
 
 import { PillButton } from "@/components/shared/PillButton";
+import { RevealBlock } from "@/components/shared/RevealBlock";
+import { RevealText } from "@/components/shared/RevealText";
 import { SectionEyebrow } from "@/components/shared/SectionEyebrow";
 import { useLanguage } from "@/providers/LanguageProvider";
 
 const heroVideo =
-  "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69fa3d9a76fece50437ae58d.mp4";
+  "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/D-Signio%20Hero%20Video.mp4";
 const heroPoster =
   "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f1fc17590487fe57bc6b76.jpg";
 
 export function HeroSection() {
   const { t } = useLanguage();
+  const heroTitle = t({
+    es: "Dotación para proyectos hoteleros, institucionales e inmobiliarios",
+    en: "Furnishing for hospitality, institutional, and real estate projects",
+  });
+  const heroDescription = t({
+    es: "Creamos espacios que combinan diseño, funcionalidad y ejecución, permitiendo que cada proyecto cobre vida y opere con eficiencia desde el primer día.",
+    en: "We create spaces that combine design, functionality, and execution, allowing each project to come to life and operate efficiently from day one.",
+  });
+  const heroCta = t({
+    es: "Escríbenos por WhatsApp",
+    en: "Message us on WhatsApp",
+  });
 
   return (
     <section className="hero-section" aria-labelledby="hero-title">
@@ -27,41 +41,27 @@ export function HeroSection() {
 
       <div className="hero-content">
         <div className="hero-copy">
-          <SectionEyebrow>
+          <SectionEyebrow delay={80}>
             {t({
               es: "Diseño & Ejecución Integral",
               en: "Design & End-to-End Execution",
             })}
           </SectionEyebrow>
 
-          <h1 id="hero-title">
-            {t({
-              es: "Dotación para proyectos hoteleros, institucionales e inmobiliarios",
-              en: "Furnishing for hospitality, institutional, and real estate projects",
-            })}
-          </h1>
+          <RevealText as="h1" id="hero-title" text={heroTitle} delay={150} />
 
-          <p>
-            {t({
-              es: "Creamos espacios que combinan diseño, funcionalidad y ejecución, permitiendo que cada proyecto cobre vida y opere con eficiencia desde el primer día.",
-              en: "We create spaces that combine design, functionality, and execution, allowing each project to come to life and operate efficiently from day one.",
-            })}
-          </p>
+          <RevealBlock as="p" delay={540}>
+            {heroDescription}
+          </RevealBlock>
 
-          <div className="hero-actions">
+          <RevealBlock as="div" className="hero-actions" delay={660}>
             <PillButton
               href="https://wa.me/573185210789"
-              ariaLabel={t({
-                es: "Escríbenos por WhatsApp",
-                en: "Message us on WhatsApp",
-              })}
+              ariaLabel={heroCta}
             >
-              {t({
-                es: "Escríbenos por WhatsApp",
-                en: "Message us on WhatsApp",
-              })}
+              {heroCta}
             </PillButton>
-          </div>
+          </RevealBlock>
         </div>
       </div>
     </section>

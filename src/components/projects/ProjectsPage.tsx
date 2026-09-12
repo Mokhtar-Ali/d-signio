@@ -12,6 +12,8 @@ import {
   ProjectLightbox,
   type LightboxImage,
 } from "@/components/projects/ProjectLightbox";
+import { RevealBlock } from "@/components/shared/RevealBlock";
+import { RevealText } from "@/components/shared/RevealText";
 import { SectionEyebrow } from "@/components/shared/SectionEyebrow";
 import { projectAliasTargets, projectDetails } from "@/data/projectDetails";
 import { useLanguage } from "@/providers/LanguageProvider";
@@ -41,6 +43,7 @@ function scrollToProjectHash(hash: string, behavior: ScrollBehavior) {
 
 export function ProjectsPage() {
   const { language, t } = useLanguage();
+  const title = t({ es: "Nuestros proyectos", en: "Our projects" });
   const [lightboxImage, setLightboxImage] = useState<LightboxImage | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
 
@@ -122,19 +125,26 @@ export function ProjectsPage() {
         aria-labelledby="projects-page-title"
       >
         <div className="projects-page-inner">
-          <SectionEyebrow>{t({ es: "Portafolio", en: "Portfolio" })}</SectionEyebrow>
-          <h1 id="projects-page-title">
-            {t({ es: "Nuestros proyectos", en: "Our projects" })}
-          </h1>
-          <p>
+          <SectionEyebrow delay={80}>
+            {t({ es: "Portafolio", en: "Portfolio" })}
+          </SectionEyebrow>
+          <RevealText
+            as="h1"
+            id="projects-page-title"
+            text={title}
+            delay={150}
+          />
+          <RevealBlock as="p" delay={320}>
             {t({
               es: "Una mirada editorial a proyectos hoteleros, institucionales, residenciales e inmobiliarios donde D Signio integra especificación, dotación, mobiliario contract y ejecución con precisión.",
               en: "An editorial look at hospitality, institutional, residential, and real estate projects where D Signio integrates specification, furnishing, contract furniture, and precise execution.",
             })}
-          </p>
+          </RevealBlock>
 
-          <nav
+          <RevealBlock
+            as="nav"
             className="projects-index"
+            delay={430}
             aria-label={t({
               es: "Navegación de proyectos",
               en: "Project navigation",
@@ -149,7 +159,7 @@ export function ProjectsPage() {
                 {project.navLabel?.[language] ?? project.name}
               </a>
             ))}
-          </nav>
+          </RevealBlock>
         </div>
       </section>
 

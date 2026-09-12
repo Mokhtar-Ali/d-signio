@@ -6,7 +6,7 @@ export const businessLines: BusinessLine[] = [
     titleEs: "TEXTILES CONTRACT",
     titleEn: "CONTRACT TEXTILES",
     image:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/6a0c51f3b55c9c73ed3caa17.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/CONTRACT%20TEXTILES%20Icon.png",
     alt: "Textiles Contract",
     items: [
       { es: "Cortinas", en: "Curtains" },
@@ -23,7 +23,7 @@ export const businessLines: BusinessLine[] = [
     titleEs: "MOBILIARIO CONTRACT",
     titleEn: "CONTRACT FURNITURE",
     image:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/6a0c51f3e29a8860a537b6e7.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/CONTRACT%20FURNITURE%20Icon.png",
     alt: "Mobiliario Contract",
     items: [
       { es: "Sofás", en: "Sofas" },
@@ -41,7 +41,7 @@ export const businessLines: BusinessLine[] = [
     titleEs: "DECORACIÓN Y AMBIENTACIÓN",
     titleEn: "DECORATION AND STYLING",
     image:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/6a0c51f3ffe384cee5676e7b.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/DECORATION%20AND%20STYLING%20Icon.png",
     alt: "Decoración y Ambientación",
     items: [
       { es: "Espejos", en: "Mirrors" },
@@ -58,7 +58,7 @@ export const businessLines: BusinessLine[] = [
     titleEs: "DISEÑO Y ESPECIFICACIÓN",
     titleEn: "DESIGN AND SPECIFICATION",
     image:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/6a0c51f385275ddc5a3680d8.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/DESIGN%20AND%20SPECIFICATION%20Icon.png",
     alt: "Diseño y Especificación",
     items: [
       { es: "Conceptualización", en: "Concept development" },

@@ -1,3 +1,4 @@
+import { RevealBlock } from "@/components/shared/RevealBlock";
 import type { ProjectFact } from "@/data/projectDetails";
 import type { Language, LocalizedText } from "@/types";
 
@@ -6,13 +7,14 @@ function resolveText(value: LocalizedText | string, language: Language) {
 }
 
 type ProjectFactsProps = {
+  delay?: number;
   facts: ProjectFact[];
   language: Language;
 };
 
-export function ProjectFacts({ facts, language }: ProjectFactsProps) {
+export function ProjectFacts({ delay = 0, facts, language }: ProjectFactsProps) {
   return (
-    <dl className="project-facts">
+    <RevealBlock as="dl" className="project-facts" delay={delay}>
       {facts.map((fact) => (
         <div className="project-fact" key={`${fact.icon}-${resolveText(fact.label, language)}`}>
           <span className="project-fact-icon" aria-hidden="true">
@@ -24,6 +26,6 @@ export function ProjectFacts({ facts, language }: ProjectFactsProps) {
           </div>
         </div>
       ))}
-    </dl>
+    </RevealBlock>
   );
 }

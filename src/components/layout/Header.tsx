@@ -7,7 +7,7 @@ import { useLanguage } from "@/providers/LanguageProvider";
 import type { LocalizedText } from "@/types";
 
 const logoUrl =
-  "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f249d6e84e52bef4c3017f.png";
+  "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/Logo%20Nav.png";
 
 export type HeaderNavItem = {
   href: string;

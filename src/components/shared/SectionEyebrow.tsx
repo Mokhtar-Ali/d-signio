@@ -1,5 +1,22 @@
-import type { ReactNode } from "react";
+"use client";
 
-export function SectionEyebrow({ children }: { children: ReactNode }) {
-  return <p className="section-eyebrow">{children}</p>;
+import type { ReactNode } from "react";
+import { RevealBlock } from "@/components/shared/RevealBlock";
+
+type SectionEyebrowProps = {
+  children: ReactNode;
+  delay?: number;
+};
+
+export function SectionEyebrow({ children, delay = 0 }: SectionEyebrowProps) {
+  return (
+    <RevealBlock
+      as="p"
+      className="section-eyebrow"
+      delay={delay}
+      variant="eyebrow"
+    >
+      {children}
+    </RevealBlock>
+  );
 }

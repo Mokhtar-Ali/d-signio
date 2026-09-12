@@ -1,11 +1,14 @@
 "use client";
 
+import { RevealBlock } from "@/components/shared/RevealBlock";
+import { RevealText } from "@/components/shared/RevealText";
 import { SectionEyebrow } from "@/components/shared/SectionEyebrow";
 import { businessLines } from "@/data/businessLines";
 import { useLanguage } from "@/providers/LanguageProvider";
 
 export function BusinessLinesSection() {
   const { language, t } = useLanguage();
+  const title = t({ es: "Las líneas de negocios", en: "Our business lines" });
 
   return (
     <section
@@ -18,20 +21,29 @@ export function BusinessLinesSection() {
           <SectionEyebrow>
             {t({ es: "Líneas de negocio", en: "Business Lines" })}
           </SectionEyebrow>
-          <h2 id="business-lines-title">
-            {t({ es: "Las líneas de negocios", en: "Our business lines" })}
-          </h2>
-          <p>
+          <RevealText
+            as="h2"
+            id="business-lines-title"
+            text={title}
+            delay={110}
+          />
+          <RevealBlock as="p" delay={300}>
             {t({
               es: "Soluciones integrales para proyectos hoteleros, institucionales e inmobiliarios.",
               en: "Comprehensive solutions for hospitality, institutional, and real estate projects.",
             })}
-          </p>
+          </RevealBlock>
         </header>
 
         <div className="business-grid">
-          {businessLines.map((line) => (
-            <article className="business-card" key={line.id}>
+          {businessLines.map((line, index) => (
+            <RevealBlock
+              as="article"
+              className="business-card"
+              delay={170}
+              key={line.id}
+              staggerIndex={index}
+            >
               <div className="business-image">
                 <img src={line.image} alt={line.alt} />
               </div>
@@ -52,7 +64,7 @@ export function BusinessLinesSection() {
                   {language === "es" ? line.descriptionEs : line.descriptionEn}
                 </span>
               </p>
-            </article>
+            </RevealBlock>
           ))}
         </div>
       </div>
