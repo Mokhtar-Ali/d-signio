@@ -8,8 +8,6 @@ import { useLanguage } from "@/providers/LanguageProvider";
 
 const heroVideo =
   "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/D-Signio%20Hero%20Video.mp4";
-const heroPoster =
-  "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f1fc17590487fe57bc6b76.jpg";
 
 export function HeroSection() {
   const { t } = useLanguage();
@@ -31,7 +29,6 @@ export function HeroSection() {
       <video
         className="hero-video"
         src={heroVideo}
-        poster={heroPoster}
         autoPlay
         muted
         loop

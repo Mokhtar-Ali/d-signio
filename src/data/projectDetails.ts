@@ -8,6 +8,14 @@ export type ProjectFact = {
 
 export type ProjectGalleryType = "standard" | "two" | "vertical3" | "six" | "single";
 
+export type ProjectImage =
+  | string
+  | {
+      galleryClassName?: string;
+      objectPosition?: string;
+      src: string;
+    };
+
 export type ProjectDetail = {
   id: string;
   aliases?: string[];
@@ -18,10 +26,27 @@ export type ProjectDetail = {
   scope: LocalizedText;
   interventions: LocalizedText[];
   result: LocalizedText;
-  images: string[];
+  images: ProjectImage[];
   galleryType: ProjectGalleryType;
   facts: ProjectFact[];
 };
+
+export function getProjectFeaturedImages(
+  project: Pick<ProjectDetail, "galleryType" | "images">,
+) {
+  const featuredImageCount =
+    project.galleryType === "standard"
+      ? 4
+      : project.galleryType === "vertical3"
+        ? 3
+        : 2;
+
+  return project.images.slice(0, featuredImageCount);
+}
+
+export function getProjectImageSrc(image: ProjectImage) {
+  return typeof image === "string" ? image : image.src;
+}
 
 export const projectDetails: ProjectDetail[] = [
   {
@@ -32,7 +57,7 @@ export const projectDetails: ProjectDetail[] = [
       en: "Decorative wallpaper",
     },
     logo:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f2122749d7293cbd4c457b.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Clients/Cartagena%20vacation%20rentals.png",
     scope: {
       es: "Proyecto inmobiliario · Interiorismo",
       en: "Real estate project · Interior design",
@@ -56,16 +81,15 @@ export const projectDetails: ProjectDetail[] = [
       en: "Wallpaper supply and installation as a focused decorative intervention to add texture and visual finish to the space.",
     },
     images: [
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69fce5a8a3dd25aa2a669141.png",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69fce7227285562721893c01.png",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69fa3387101c593bfc7ea7eb.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Casa%20Le%20Compte%201.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Casa%20Le%20Compte%202.png",
     ],
-    galleryType: "vertical3",
+    galleryType: "two",
     facts: [
       {
         icon: "C",
         label: { es: "Cliente", en: "Client" },
-        value: "Casa Lecompte",
+        value: "Cartagena Vacation Rentals",
       },
       {
         icon: "P",
@@ -95,7 +119,7 @@ export const projectDetails: ProjectDetail[] = [
       en: "Strategic furnishing",
     },
     logo:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f21227f50d9ecd2e0fc9b3.jpg",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Clients/Hotel%20El%20Parado.jpg",
     scope: {
       es: "Hospitality · Dotación estratégica",
       en: "Hospitality · Strategic furnishing",
@@ -119,11 +143,10 @@ export const projectDetails: ProjectDetail[] = [
       en: "Structuring, specification, and execution of furniture, textiles, and details for hospitality spaces.",
     },
     images: [
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f734d4d868be008541bc4b.png",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f7350c6b07ab3303398fd5.png",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f7308652d70cb766c8c93f.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Hotel%20El%20Prado%201.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Hotel%20El%20Prado%202.png",
     ],
-    galleryType: "vertical3",
+    galleryType: "two",
     facts: [
       {
         icon: "C",
@@ -163,7 +186,7 @@ export const projectDetails: ProjectDetail[] = [
       en: "Guest rooms",
     },
     logo:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f21227fab44d40209f20de.jpg",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Clients/Fernanda.jpg",
     scope: {
       es: "Hospitality · Habitaciones",
       en: "Hospitality · Guest rooms",
@@ -187,10 +210,10 @@ export const projectDetails: ProjectDetail[] = [
       en: "Blackout curtains, serene-wave sheers, and bed runners for high-traffic hotel rooms.",
     },
     images: [
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f4c22ddaa24d9895fdaafb.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f4c22d94b9e824d53e20da.jpg",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Hotel%20Faranda%20Cartagena%201.jpg",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Hotel%20Faranda%20Cartagena%202.jpg",
     ],
-    galleryType: "two",
+    galleryType: "single",
     facts: [
       {
         icon: "C",
@@ -229,7 +252,7 @@ export const projectDetails: ProjectDetail[] = [
       en: "Textiles and accessories",
     },
     logo:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f21227e84e52bef4b2091e.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Clients/Fernanda.jpg",
     scope: {
       es: "Hospitality · Textiles y accesorios",
       en: "Hospitality · Textiles and accessories",
@@ -253,9 +276,9 @@ export const projectDetails: ProjectDetail[] = [
       en: "Textile elements, accessories, and functional details for rooms, pool, and restaurant.",
     },
     images: [
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f72f188831cb2c6ce25dd9.png",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f72e45dd67e758c0dd917c.png",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f72e456b07ab330338c7e0.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Hotel%20Faranda%20Barranquilla%201.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Hotel%20Faranda%20Barranquilla%202.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Hotel%20Faranda%20Barranquilla%203.png",
     ],
     galleryType: "vertical3",
     facts: [
@@ -292,7 +315,7 @@ export const projectDetails: ProjectDetail[] = [
       en: "End-to-end execution",
     },
     logo:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f2122749d7293cbd4c457c.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Clients/Wyndaham.png",
     scope: {
       es: "Hospitality · Ejecución integral",
       en: "Hospitality · End-to-end execution",
@@ -316,10 +339,10 @@ export const projectDetails: ProjectDetail[] = [
       en: "Design, furniture, and decorative detail solutions focused on operation, durability, and experience.",
     },
     images: [
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/6a0830e32e98e28fa12a0c2f.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69fa3724a7386fa308a26d81.png",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69fa372440c3c42fc07384b2.png",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69fa37242c10cdf20f4cb231.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Wyndham%20Santa%20Marta%201.jpg",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Wyndham%20Santa%20Marta%202.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Wyndham%20Santa%20Marta%203.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Wyndham%20Santa%20Marta%204.png",
     ],
     galleryType: "standard",
     facts: [
@@ -356,7 +379,7 @@ export const projectDetails: ProjectDetail[] = [
       en: "Design and furnishing",
     },
     logo:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f21227e84e52bef4b2091f.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Clients/Irotama.png",
     scope: {
       es: "Resort · Diseño y dotación",
       en: "Resort · Design and furnishing",
@@ -376,7 +399,7 @@ export const projectDetails: ProjectDetail[] = [
       en: "Custom decorative lamp fabrication to complement the resort's interior atmosphere.",
     },
     images: [
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f3b6d74ad535b652f86f73.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Irotama%20Resort%20.png",
     ],
     galleryType: "single",
     facts: [
@@ -417,7 +440,7 @@ export const projectDetails: ProjectDetail[] = [
       en: "Vacation rentals",
     },
     logo:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f2122749d7293cbd4c457b.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Clients/Cartagena%20vacation%20rentals.png",
     scope: {
       es: "Renta vacacional · Interiorismo",
       en: "Vacation rentals · Interior design",
@@ -437,12 +460,13 @@ export const projectDetails: ProjectDetail[] = [
       en: "Curtain fabrication and installation, along with interior design for another property in the portfolio.",
     },
     images: [
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f201e2663e5f92ffe04ff7.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f201e2fab44d40209b35c6.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f4ce4f582e1c6327b2b727.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f5b96fdd67e758c0a2ede9.jpeg",
+      {
+        galleryClassName: "project-gallery--compact-single",
+        objectPosition: "center 60%",
+        src: "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/Home%20Projects%20Cartagena%20Vacation%20Rentals.jpg",
+      },
     ],
-    galleryType: "standard",
+    galleryType: "single",
     facts: [
       {
         icon: "C",
@@ -474,8 +498,8 @@ export const projectDetails: ProjectDetail[] = [
     aliases: ["hays-house"],
     name: "Patio Residencial",
     subtitle: {
-      es: "Diseño conceptual 360°",
-      en: "360° conceptual design",
+      es: "Diseño conceptual 360° para patio residencial",
+      en: "360° conceptual design for a residential patio",
     },
     scope: {
       es: "Residencial · Diseño conceptual 360°",
@@ -500,7 +524,11 @@ export const projectDetails: ProjectDetail[] = [
       en: "360° conceptual design for a residential patio, with immersive visualization and KANNOA furniture specification.",
     },
     images: [
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69fcc6b3a3dd25aa2a5e0910.jpg",
+      {
+        galleryClassName: "project-gallery--patio-single",
+        objectPosition: "center",
+        src: "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Patio%20Residencial%20.jpg",
+      },
     ],
     galleryType: "single",
     facts: [
@@ -526,10 +554,10 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         icon: "S",
-        label: { es: "Alcance", en: "Scope" },
+        label: { es: "Estado", en: "Status" },
         value: {
-          es: "Residencial · Diseño conceptual 360°",
-          en: "Residential · 360° conceptual design",
+          es: "Ejecutado",
+          en: "Completed",
         },
       },
     ],
@@ -542,7 +570,7 @@ export const projectDetails: ProjectDetail[] = [
       en: "Brand experience",
     },
     logo:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f21227d6968461202d7b23.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Clients/Nepresso.png",
     scope: {
       es: "Experiencia de marca · Activación",
       en: "Brand experience · Activation",
@@ -566,12 +594,14 @@ export const projectDetails: ProjectDetail[] = [
       en: "Design applied to brand experience, decorative details, and commercial activation.",
     },
     images: [
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f4d06e23e63d676c857b6c.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f736fe6b07ab330339ce02.png",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f4d06e8831cb2c6c8236ae.jpg",
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f738da8831cb2c6ce38f17.png",
+      {
+        galleryClassName: "project-gallery--nespresso-three",
+        src: "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Nepresso%201.jpg",
+      },
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Nepresso%202.jpg",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Nepresso%203.png",
     ],
-    galleryType: "standard",
+    galleryType: "vertical3",
     facts: [
       {
         icon: "C",

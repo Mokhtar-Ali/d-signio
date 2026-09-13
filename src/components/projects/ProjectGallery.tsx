@@ -1,6 +1,10 @@
 import type { SyntheticEvent } from "react";
 import { RevealBlock } from "@/components/shared/RevealBlock";
-import type { ProjectDetail } from "@/data/projectDetails";
+import {
+  getProjectFeaturedImages,
+  getProjectImageSrc,
+  type ProjectDetail,
+} from "@/data/projectDetails";
 import type { Language } from "@/types";
 
 type ProjectGalleryProps = {
@@ -32,21 +36,42 @@ export function ProjectGallery({
   onOpenImage,
   revealDelay = 0,
 }: ProjectGalleryProps) {
-  const countClass = `project-gallery--count-${project.images.length}`;
+  const images = getProjectFeaturedImages(project);
+  const countClass = `project-gallery--count-${images.length}`;
+  const galleryClass =
+    images.length === 4
+      ? "project-gallery--standard"
+      : images.length === 3
+        ? "project-gallery--three"
+        : "project-gallery--two";
+  const galleryDisplayClasses = images
+    .flatMap((image) =>
+      typeof image === "string" || !image.galleryClassName
+        ? []
+        : [image.galleryClassName],
+    )
+    .join(" ");
 
   return (
     <RevealBlock
       as="div"
-      className={`project-gallery project-gallery--${project.galleryType} ${countClass}`}
+      className={`project-gallery ${galleryClass} ${countClass}${
+        galleryDisplayClasses ? ` ${galleryDisplayClasses}` : ""
+      }`}
       delay={revealDelay}
       variant="soft"
     >
-      {project.images.map((src, index) => {
+      {images.map((image, index) => {
+        const src = getProjectImageSrc(image);
         const imageAlt = `${project.name} ${index + 1}`;
         const openLabel =
           language === "es"
             ? `Abrir imagen ${index + 1} de ${project.name}`
             : `Open image ${index + 1} from ${project.name}`;
+        const imageStyle =
+          typeof image === "string" || !image.objectPosition
+            ? undefined
+            : { objectPosition: image.objectPosition };
 
         return (
           <button
@@ -65,6 +90,7 @@ export function ProjectGallery({
             <img
               src={src}
               alt={imageAlt}
+              style={imageStyle}
               onError={(event) => handleImageError(src, project.name, event)}
             />
           </button>

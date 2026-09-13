@@ -7,7 +7,7 @@ import { SectionEyebrow } from "@/components/shared/SectionEyebrow";
 import { useLanguage } from "@/providers/LanguageProvider";
 
 const logoUrl =
-  "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f249d6d6968461203e69ec.png";
+  "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/Logo%20Nav.png";
 
 const images = [
   "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/About%20Karol%201.jpg",

@@ -73,7 +73,11 @@ function SocialIcon({ icon }: { icon: SocialIconName }) {
 }
 
 export function Footer() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+  const cleopatraUrl =
+    language === "en"
+      ? "https://cleopatrasolutions.com/en"
+      : "https://cleopatrasolutions.com/es";
 
   return (
     <footer className="site-footer">
@@ -127,8 +131,45 @@ export function Footer() {
 
         <RevealBlock
           as="div"
+          className="footer-cta"
+          delay={120}
+          variant="fade"
+        >
+          <div className="footer-cta-copy">
+            <p className="footer-cta-eyebrow">
+              {t({
+                es: "Sitios web por Cleopatra Solutions",
+                en: "Websites by Cleopatra Solutions",
+              })}
+            </p>
+            <h2>
+              {t({
+                es: "¿Quieres una web como esta para tu negocio?",
+                en: "Want a website like this for your business?",
+              })}
+            </h2>
+            <p>
+              {t({
+                es: "Creamos sitios web modernos, estratégicos y adaptados a tu marca para presentar tus servicios, generar confianza y atraer nuevos clientes.",
+                en: "We create modern, strategic websites tailored to your brand to present your services, build trust, and attract new clients.",
+              })}
+            </p>
+          </div>
+          <a
+            className="footer-cta-button"
+            href={cleopatraUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t({ es: "Crear mi sitio web", en: "Build my website" })}
+            <span aria-hidden="true">→</span>
+          </a>
+        </RevealBlock>
+
+        <RevealBlock
+          as="div"
           className="footer-bottom"
-          delay={150}
+          delay={180}
           variant="fade"
         >
           <span>
@@ -138,13 +179,13 @@ export function Footer() {
             })}
           </span>
           <span>
-            Built by{" "}
+            {t({ es: "Creado por", en: "Created by" })}{" "}
             <a
-              href="https://cleopatrasolutions.com/"
+              href={cleopatraUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Cleopatra Solutions
+              @Cleopatra Solutions
             </a>
           </span>
         </RevealBlock>

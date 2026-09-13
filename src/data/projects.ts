@@ -84,7 +84,7 @@ export const projects: Project[] = [
     name: "Hays House",
     city: "Virginia",
     image:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69fcc6b3a3dd25aa2a5e0910.jpg",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Patio%20Residencial%20.jpg",
     metaEs: "Residencial · Diseño conceptual 360°",
     metaEn: "Residential · 360° conceptual design",
     descriptionEs:
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     name: "Nespresso",
     city: "Barranquilla",
     image:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f3b7aeb7fe31537ab500ee.jpg",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Nepresso%201.jpg",
     metaEs: "Experiencia de marca · Activación",
     metaEn: "Brand experience · Activation",
     descriptionEs:
@@ -110,12 +110,12 @@ export const projects: Project[] = [
     name: "Irotama Resort",
     city: "Santa Marta",
     image:
-      "https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69f3b6d74ad535b652f86f73.png",
+      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Irotama%20Resort%20.png",
     metaEs: "Resort · Diseño y dotación",
     metaEn: "Resort · Design and furnishing",
     descriptionEs:
       "Fabricación de lámpara decorativa a medida para complementar la atmósfera interior del resort.",
     descriptionEn:
-      "Custom decorative lamp fabrication to complement the resort's interior atmosphere.",
+      "Custom decorative lamp fabrication to complement the resort’s interior atmosphere.",
   },
 ];

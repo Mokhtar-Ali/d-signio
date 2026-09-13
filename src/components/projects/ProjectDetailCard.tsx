@@ -2,7 +2,10 @@ import { ProjectFacts } from "@/components/projects/ProjectFacts";
 import { ProjectGallery } from "@/components/projects/ProjectGallery";
 import { RevealBlock } from "@/components/shared/RevealBlock";
 import { RevealText } from "@/components/shared/RevealText";
-import type { ProjectDetail } from "@/data/projectDetails";
+import {
+  getProjectFeaturedImages,
+  type ProjectDetail,
+} from "@/data/projectDetails";
 import type { Language, LocalizedText } from "@/types";
 
 function resolveText(value: LocalizedText | string, language: Language) {
@@ -20,9 +23,31 @@ export function ProjectDetailCard({
   onOpenImage,
   project,
 }: ProjectDetailCardProps) {
+  const galleryImages = getProjectFeaturedImages(project);
+  const hasGallery = galleryImages.length > 0;
+  const logoAlt =
+    project.id === "casa-lecompte"
+      ? "Cartagena Vacation Rentals logo"
+      : `${project.name} logo`;
+  const logo = project.logo ? (
+    <RevealBlock
+      as="div"
+      className="project-detail-logo"
+      delay={260}
+      variant="fade"
+    >
+      <img src={project.logo} alt={logoAlt} />
+    </RevealBlock>
+  ) : null;
+  const facts = (
+    <ProjectFacts facts={project.facts} language={language} delay={570} />
+  );
+
   return (
     <article
-      className={`project-detail-card project-detail-card--${project.galleryType}`}
+      className={`project-detail-card project-detail-card--media-${galleryImages.length}${
+        hasGallery ? "" : " project-detail-card--text-only"
+      }`}
       id={project.id}
     >
       {project.aliases?.map((alias) => (
@@ -34,27 +59,22 @@ export function ProjectDetailCard({
         />
       ))}
 
-      <div className="project-detail-info">
-        {project.logo ? (
-          <RevealBlock
-            as="div"
-            className="project-detail-logo"
-            delay={80}
-            variant="fade"
-          >
-            <img src={project.logo} alt={`${project.name} logo`} />
-          </RevealBlock>
-        ) : null}
-
+      <div
+        className={`project-detail-info${
+          project.logo ? "" : " project-detail-info--no-logo"
+        }`}
+      >
         <RevealBlock
           as="p"
           className="project-detail-kicker"
-          delay={project.logo ? 140 : 80}
+          delay={80}
           variant="slide"
         >
           {resolveText(project.subtitle, language)}
         </RevealBlock>
         <RevealText as="h2" text={project.name} delay={190} />
+
+        {logo}
 
         <div className="project-detail-copy">
           <RevealBlock
@@ -93,15 +113,18 @@ export function ProjectDetailCard({
           </RevealBlock>
         </div>
 
-        <ProjectFacts facts={project.facts} language={language} delay={570} />
       </div>
 
-      <ProjectGallery
-        project={project}
-        language={language}
-        onOpenImage={onOpenImage}
-        revealDelay={220}
-      />
+      {hasGallery ? (
+        <ProjectGallery
+          project={project}
+          language={language}
+          onOpenImage={onOpenImage}
+          revealDelay={220}
+        />
+      ) : null}
+
+      {facts}
     </article>
   );
 }
