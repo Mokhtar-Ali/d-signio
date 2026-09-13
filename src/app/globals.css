@@ -722,26 +722,29 @@ button {
 
 .business-image {
   display: grid;
-  width: 128px;
-  height: 128px;
+  width: 96px;
+  height: 96px;
   margin-bottom: 25px;
-  border: 1px solid rgba(157, 97, 91, 0.1);
-  border-radius: 26px;
-  background: rgba(246, 241, 235, 0.72);
+  overflow: visible;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
   place-items: center;
 }
 
 .business-image img {
-  width: auto;
-  height: auto;
-  max-width: 116px;
-  max-height: 116px;
+  display: block;
+  width: 96px;
+  height: 96px;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
 }
 
-.business-card:nth-child(4) .business-image img {
-  max-width: 124px;
-  max-height: 124px;
+.business-image--diseno-especificacion img {
+  width: 96px;
+  height: 96px;
 }
 
 .business-card h3 {
@@ -1077,36 +1080,6 @@ button {
   line-height: 1.75;
 }
 
-.projects-index {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  max-width: 980px;
-  margin-top: 34px;
-}
-
-.projects-index a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 36px;
-  padding: 9px 12px;
-  border: 1px solid rgba(157, 97, 91, 0.2);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.54);
-  color: var(--ds-muted);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0;
-  line-height: 1;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition:
-    border-color 0.2s ease,
-    color 0.2s ease,
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
 .project-detail-list {
   display: grid;
   gap: clamp(26px, 4vw, 40px);
@@ -1404,7 +1377,8 @@ button {
   min-height: clamp(460px, 40vw, 520px);
 }
 
-.project-gallery--nespresso-three {
+.project-gallery--nespresso-two {
+  gap: clamp(18px, 2vw, 22px);
   min-height: clamp(440px, 38vw, 500px);
 }
 
@@ -1435,7 +1409,13 @@ button {
 }
 
 .project-gallery--compact-single {
-  min-height: clamp(300px, 31vw, 330px);
+  align-self: center;
+  height: clamp(360px, 32vw, 420px);
+  min-height: 0;
+}
+
+.project-gallery--compact-single .project-gallery-item {
+  height: 100%;
 }
 
 .project-gallery--patio-single {
@@ -1481,13 +1461,6 @@ button {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .projects-index a:hover {
-    border-color: rgba(157, 97, 91, 0.42);
-    background: rgba(255, 255, 255, 0.8);
-    color: var(--ds-brand);
-    transform: translateY(-1px);
-  }
-
   .project-gallery-item:hover img {
     transform: scale(1.02);
   }
@@ -1996,7 +1969,7 @@ button {
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 24px;
   align-items: center;
-  margin: 0 0 24px;
+  margin: 0;
   padding: 22px 24px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -2089,7 +2062,8 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 10px 24px;
-  padding-top: 22px;
+  margin-top: 20px;
+  padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.48);
   font-size: 12.5px;
@@ -2148,14 +2122,15 @@ button {
   }
 
   .project-gallery--compact-single {
-    min-height: clamp(300px, 36vw, 330px);
+    height: clamp(330px, 38vw, 390px);
+    min-height: 0;
   }
 
   .project-gallery--patio-single {
     min-height: clamp(440px, 52vw, 520px);
   }
 
-  .project-gallery--nespresso-three {
+  .project-gallery--nespresso-two {
     min-height: clamp(420px, 48vw, 500px);
   }
 
@@ -2346,6 +2321,34 @@ button {
     padding: 58px 16px 64px;
   }
 
+  #about .about-copy {
+    display: contents;
+  }
+
+  #about .section-eyebrow {
+    order: 1;
+  }
+
+  #about .about-copy h2 {
+    order: 2;
+  }
+
+  #about .about-text {
+    order: 3;
+  }
+
+  #about .about-highlight {
+    order: 4;
+  }
+
+  #about .about-images {
+    order: 5;
+  }
+
+  #about .stat-grid {
+    order: 6;
+  }
+
   .section-header h2,
   .about-copy h2,
   .karol-copy h2 {
@@ -2419,7 +2422,10 @@ button {
   }
 
   #about .about-images {
+    grid-template-columns: 1fr;
     gap: 12px;
+    width: 100%;
+    max-width: 100%;
   }
 
   .about-main-image,
@@ -2433,9 +2439,7 @@ button {
   }
 
   #about .about-side-images {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-    transform: none;
+    display: none;
   }
 
   #about .about-side-images .image-frame:first-child,
@@ -2557,17 +2561,6 @@ button {
     line-height: 1.7;
   }
 
-  .projects-index {
-    gap: 7px;
-    margin-top: 26px;
-  }
-
-  .projects-index a {
-    min-height: 34px;
-    padding: 8px 10px;
-    font-size: 10.5px;
-  }
-
   .project-detail-list {
     width: 100%;
     gap: 22px;
@@ -2665,19 +2658,28 @@ button {
     border-radius: 20px;
   }
 
+  .project-gallery--compact-single {
+    align-self: stretch;
+    height: auto;
+  }
+
   .project-gallery--standard .project-gallery-item {
     height: clamp(280px, 82vw, 340px);
   }
 
   .project-gallery--compact-single .project-gallery-item {
-    height: clamp(260px, 74vw, 310px);
+    height: clamp(230px, 62vw, 290px);
   }
 
   .project-gallery--patio-single .project-gallery-item {
     height: clamp(300px, 86vw, 360px);
   }
 
-  .project-gallery--nespresso-three .project-gallery-item {
+  .project-gallery--nespresso-two {
+    gap: 14px;
+  }
+
+  .project-gallery--nespresso-two .project-gallery-item {
     height: clamp(300px, 86vw, 360px);
   }
 
@@ -2791,14 +2793,33 @@ button {
   }
 
   #contact .karol-copy {
+    display: contents;
+  }
+
+  #contact .karol-brand {
     order: 1;
-    max-width: 100%;
+  }
+
+  #contact .section-eyebrow {
+    order: 2;
+  }
+
+  #contact .karol-copy h2 {
+    order: 3;
+  }
+
+  #contact .karol-text {
+    order: 4;
   }
 
   #contact .karol-gallery {
-    order: 2;
+    order: 5;
     width: 100%;
     max-width: 620px;
+  }
+
+  #contact .contact-card {
+    order: 6;
   }
 
   #contact .karol-logo {
@@ -2855,12 +2876,7 @@ button {
   }
 
   #contact .karol-small-grid {
-    gap: 10px;
-  }
-
-  #contact .karol-small-grid .image-frame {
-    min-height: 124px;
-    border-radius: 20px;
+    display: none;
   }
 
   .site-footer {
@@ -2908,7 +2924,6 @@ button {
   .footer-cta {
     grid-template-columns: 1fr;
     gap: 18px;
-    margin-bottom: 22px;
     padding: 20px;
     border-radius: 20px;
   }
@@ -2932,6 +2947,7 @@ button {
     display: grid;
     gap: 7px;
     justify-content: start;
+    margin-top: 18px;
     padding-top: 18px;
     font-size: 12.5px;
   }
@@ -2958,20 +2974,20 @@ button {
   }
 
   #business-lines .business-image {
-    width: 112px;
-    height: 112px;
+    width: 96px;
+    height: 96px;
     margin-bottom: 22px;
-    border-radius: 23px;
+    border-radius: 0;
   }
 
   #business-lines .business-image img {
-    max-width: 104px;
-    max-height: 104px;
+    width: 96px;
+    height: 96px;
   }
 
-  #business-lines .business-card:nth-child(4) .business-image img {
-    max-width: 112px;
-    max-height: 112px;
+  #business-lines .business-image--diseno-especificacion img {
+    width: 96px;
+    height: 96px;
   }
 
   #business-lines .business-card h3 {

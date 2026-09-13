@@ -5,7 +5,6 @@ import {
   useEffect,
   useRef,
   useState,
-  type MouseEvent,
 } from "react";
 import { ProjectDetailCard } from "@/components/projects/ProjectDetailCard";
 import {
@@ -69,17 +68,6 @@ export function ProjectsPage() {
     });
   }, []);
 
-  const handleProjectNavClick = useCallback(
-    (projectId: string, event: MouseEvent<HTMLAnchorElement>) => {
-      event.preventDefault();
-      const hash = `#${projectId}`;
-
-      window.history.pushState(null, "", hash);
-      scrollToProjectHash(hash, getScrollBehavior());
-    },
-    [getScrollBehavior],
-  );
-
   useEffect(() => {
     const handleHashChange = () => {
       requestAnimationFrame(() => {
@@ -141,25 +129,6 @@ export function ProjectsPage() {
             })}
           </RevealBlock>
 
-          <RevealBlock
-            as="nav"
-            className="projects-index"
-            delay={430}
-            aria-label={t({
-              es: "Navegación de proyectos",
-              en: "Project navigation",
-            })}
-          >
-            {projectDetails.map((project) => (
-              <a
-                href={`#${project.id}`}
-                key={project.id}
-                onClick={(event) => handleProjectNavClick(project.id, event)}
-              >
-                {project.navLabel?.[language] ?? project.name}
-              </a>
-            ))}
-          </RevealBlock>
         </div>
       </section>
 

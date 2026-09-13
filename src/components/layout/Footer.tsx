@@ -166,12 +166,7 @@ export function Footer() {
           </a>
         </RevealBlock>
 
-        <RevealBlock
-          as="div"
-          className="footer-bottom"
-          delay={180}
-          variant="fade"
-        >
+        <div className="footer-bottom">
           <span>
             {t({
               es: "© 2026 D Signio. Todos los derechos reservados.",
@@ -179,7 +174,7 @@ export function Footer() {
             })}
           </span>
           <span>
-            {t({ es: "Creado por", en: "Created by" })}{" "}
+            Built by{" "}
             <a
               href={cleopatraUrl}
               target="_blank"
@@ -188,7 +183,7 @@ export function Footer() {
               @Cleopatra Solutions
             </a>
           </span>
-        </RevealBlock>
+        </div>
       </div>
     </footer>
   );

@@ -44,7 +44,7 @@ export function BusinessLinesSection() {
               key={line.id}
               staggerIndex={index}
             >
-              <div className="business-image">
+              <div className={`business-image business-image--${line.id}`}>
                 <img src={line.image} alt={line.alt} />
               </div>
 

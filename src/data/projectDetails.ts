@@ -462,7 +462,7 @@ export const projectDetails: ProjectDetail[] = [
     images: [
       {
         galleryClassName: "project-gallery--compact-single",
-        objectPosition: "center 60%",
+        objectPosition: "center 58%",
         src: "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Home%20Page/Home%20Projects%20Cartagena%20Vacation%20Rentals.jpg",
       },
     ],
@@ -595,13 +595,12 @@ export const projectDetails: ProjectDetail[] = [
     },
     images: [
       {
-        galleryClassName: "project-gallery--nespresso-three",
-        src: "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Nepresso%201.jpg",
+        galleryClassName: "project-gallery--nespresso-two",
+        src: "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Nepresso%202.jpg",
       },
-      "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Nepresso%202.jpg",
       "https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/D-Signio/Projects/Nepresso%203.png",
     ],
-    galleryType: "vertical3",
+    galleryType: "two",
     facts: [
       {
         icon: "C",

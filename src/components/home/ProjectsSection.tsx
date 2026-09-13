@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { RevealBlock } from "@/components/shared/RevealBlock";
 import { RevealText } from "@/components/shared/RevealText";
 import { SectionEyebrow } from "@/components/shared/SectionEyebrow";
@@ -12,44 +12,225 @@ const projectDetailTargets: Record<string, string> = {
   "hays-house": "patio-residencial",
 };
 
+const carouselIntervalMs = 3000;
+
 export function ProjectsSection() {
+  const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const scrollFrameRef = useRef<number | null>(null);
   const { language, t } = useLanguage();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isCarouselVisible, setIsCarouselVisible] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [timerResetKey, setTimerResetKey] = useState(0);
   const title = t({
     es: "Proyectos diseñados, estructurados y ejecutados con precisión.",
     en: "Projects designed, structured, and executed with precision.",
   });
 
-  function scrollProjects(direction: -1 | 1) {
+  const resetAutoplayTimer = useCallback(() => {
+    setTimerResetKey((key) => key + 1);
+  }, []);
+
+  const getCarouselMetrics = useCallback(() => {
     const track = trackRef.current;
 
     if (!track) {
-      return;
+      return null;
     }
 
     const card = track.querySelector<HTMLElement>(".project-card");
+    const cards = track.querySelectorAll<HTMLElement>(".project-card");
+
+    if (!card || cards.length === 0) {
+      return null;
+    }
+
     const styles = window.getComputedStyle(track);
     const gap =
       [styles.columnGap, styles.gap]
         .map((value) => Number.parseFloat(value))
         .find((value) => Number.isFinite(value)) ?? 0;
-    const distance = card ? card.getBoundingClientRect().width + gap : 360;
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    const behavior: ScrollBehavior = prefersReducedMotion ? "auto" : "smooth";
+    const distance = card.getBoundingClientRect().width + gap;
+    const visibleCards = Math.max(
+      1,
+      Math.floor((track.clientWidth + gap + 1) / distance),
+    );
+    const maxIndex = Math.max(0, cards.length - visibleCards);
 
-    track.scrollBy({
-      left: direction * distance,
-      behavior,
+    return {
+      distance,
+      maxIndex,
+      track,
+    };
+  }, []);
+
+  const scrollToProjectIndex = useCallback(
+    (index: number, behavior: ScrollBehavior) => {
+      const metrics = getCarouselMetrics();
+
+      if (!metrics) {
+        return;
+      }
+
+      const slotCount = metrics.maxIndex + 1;
+      const nextIndex = ((index % slotCount) + slotCount) % slotCount;
+
+      metrics.track.scrollTo({
+        left: nextIndex * metrics.distance,
+        behavior,
+      });
+      setActiveIndex(nextIndex);
+    },
+    [getCarouselMetrics],
+  );
+
+  const scrollProjects = useCallback(
+    (direction: -1 | 1, isManual = false) => {
+      const metrics = getCarouselMetrics();
+
+      if (!metrics) {
+        return;
+      }
+
+      const slotCount = metrics.maxIndex + 1;
+      const nextIndex = (activeIndex + direction + slotCount) % slotCount;
+      const behavior: ScrollBehavior = prefersReducedMotion ? "auto" : "smooth";
+
+      scrollToProjectIndex(nextIndex, behavior);
+
+      if (isManual) {
+        resetAutoplayTimer();
+      }
+    },
+    [
+      activeIndex,
+      getCarouselMetrics,
+      prefersReducedMotion,
+      resetAutoplayTimer,
+      scrollToProjectIndex,
+    ],
+  );
+
+  const handleTrackScroll = useCallback(() => {
+    if (scrollFrameRef.current !== null) {
+      window.cancelAnimationFrame(scrollFrameRef.current);
+    }
+
+    scrollFrameRef.current = window.requestAnimationFrame(() => {
+      scrollFrameRef.current = null;
+      const metrics = getCarouselMetrics();
+
+      if (!metrics) {
+        return;
+      }
+
+      const nextIndex = Math.min(
+        metrics.maxIndex,
+        Math.max(0, Math.round(metrics.track.scrollLeft / metrics.distance)),
+      );
+
+      setActiveIndex(nextIndex);
     });
-  }
+  }, [getCarouselMetrics]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotionPreference = () => {
+      setPrefersReducedMotion(mediaQuery.matches);
+    };
+
+    updateMotionPreference();
+    mediaQuery.addEventListener("change", updateMotionPreference);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateMotionPreference);
+    };
+  }, []);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section || !("IntersectionObserver" in window)) {
+      setIsCarouselVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsCarouselVisible(entry.isIntersecting);
+      },
+      { threshold: 0.25 },
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (
+      !isCarouselVisible ||
+      prefersReducedMotion ||
+      projects.length <= 1
+    ) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      scrollProjects(1);
+    }, carouselIntervalMs);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [
+    activeIndex,
+    isCarouselVisible,
+    prefersReducedMotion,
+    scrollProjects,
+    timerResetKey,
+  ]);
+
+  useEffect(() => {
+    const syncCarouselPosition = () => {
+      const metrics = getCarouselMetrics();
+
+      if (!metrics) {
+        return;
+      }
+
+      const nextIndex = Math.min(activeIndex, metrics.maxIndex);
+      metrics.track.scrollTo({
+        left: nextIndex * metrics.distance,
+        behavior: "auto",
+      });
+      setActiveIndex(nextIndex);
+    };
+
+    window.addEventListener("resize", syncCarouselPosition);
+
+    return () => {
+      window.removeEventListener("resize", syncCarouselPosition);
+    };
+  }, [activeIndex, getCarouselMetrics]);
+
+  useEffect(() => {
+    return () => {
+      if (scrollFrameRef.current !== null) {
+        window.cancelAnimationFrame(scrollFrameRef.current);
+      }
+    };
+  }, []);
 
   return (
     <section
       id="projects"
       className="section section--warm"
       aria-labelledby="projects-title"
+      ref={sectionRef}
     >
       <div className="section-inner">
         <div className="projects-heading">
@@ -71,7 +252,7 @@ export function ProjectsSection() {
               className="icon-button"
               type="button"
               aria-label={t({ es: "Proyecto anterior", en: "Previous project" })}
-              onClick={() => scrollProjects(-1)}
+              onClick={() => scrollProjects(-1, true)}
             >
               ‹
             </button>
@@ -79,7 +260,7 @@ export function ProjectsSection() {
               className="icon-button"
               type="button"
               aria-label={t({ es: "Proyecto siguiente", en: "Next project" })}
-              onClick={() => scrollProjects(1)}
+              onClick={() => scrollProjects(1, true)}
             >
               ›
             </button>
@@ -87,7 +268,14 @@ export function ProjectsSection() {
         </div>
 
         <div className="projects-carousel">
-          <div className="projects-track" ref={trackRef} role="list">
+          <div
+            className="projects-track"
+            ref={trackRef}
+            role="list"
+            onPointerDown={resetAutoplayTimer}
+            onScroll={handleTrackScroll}
+            onTouchStart={resetAutoplayTimer}
+          >
             {projects.map((project, index) => {
               const detailId = projectDetailTargets[project.id] ?? project.id;
 

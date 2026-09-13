@@ -56,7 +56,12 @@ export function KarolSection() {
         </RevealBlock>
 
         <div className="karol-copy">
-          <RevealBlock as="div" delay={80} variant="fade">
+          <RevealBlock
+            as="div"
+            className="karol-brand"
+            delay={80}
+            variant="fade"
+          >
             <img className="karol-logo" src={logoUrl} alt="D Signio" />
           </RevealBlock>
 
